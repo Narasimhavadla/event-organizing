@@ -9,130 +9,138 @@ import {
 
 export default function Contact() {
   return (
-    <div className="bg-[#FAF7F2] text-[#1F1F1F] overflow-hidden">
+    <div className="bg-black text-white overflow-hidden">
 
       {/* ================= HERO ================= */}
-      <section className="py-32 px-6 text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+      <section className="relative py-32 text-center px-6">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/40 to-pink-600/40 blur-3xl"></div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-light tracking-wide mb-6"
+          transition={{ duration: 1 }}
+          className="relative z-10"
         >
-          Let’s Plan Something <span className="text-[#C6A75E] font-semibold">Extraordinary</span>
-        </motion.h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          From luxury weddings to premium corporate events — we craft timeless experiences with elegance.
-        </p>
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
+            Let’s Create <span className="text-purple-400">Something Magical</span>
+          </h1>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Have an idea? A celebration? A vision?  
+            We turn moments into unforgettable experiences.
+          </p>
+        </motion.div>
       </section>
 
       {/* ================= CONTACT SECTION ================= */}
-      <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 px-6 pb-24">
+      <section className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 px-6 pb-24">
 
-        {/* LEFT INFO */}
+        {/* LEFT SIDE */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="space-y-10"
         >
-          <div>
-            <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
-            <div className="w-20 h-[2px] bg-[#C6A75E]"></div>
-          </div>
+          <h2 className="text-3xl font-bold">Get In Touch</h2>
 
-          <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <FontAwesomeIcon icon={faPhone} className="text-[#C6A75E] text-lg mt-1" />
+          {/* Contact Cards */}
+          {[
+            { icon: faPhone, title: "Call Us", value: "+91 98765 43210" },
+            { icon: faEnvelope, title: "Email Us", value: "hello@luxevents.com" },
+            { icon: faLocationDot, title: "Visit Us", value: "Jubilee Hills, Hyderabad" },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05 }}
+              className="flex items-start gap-6 bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-lg"
+            >
+              <FontAwesomeIcon
+                icon={item.icon}
+                className="text-2xl text-purple-400"
+              />
               <div>
-                <h4 className="font-medium">Phone</h4>
-                <p className="text-gray-600">+91 98765 43210</p>
+                <h4 className="font-semibold">{item.title}</h4>
+                <p className="text-gray-400 text-sm">{item.value}</p>
               </div>
-            </div>
+            </motion.div>
+          ))}
 
-            <div className="flex items-start gap-4">
-              <FontAwesomeIcon icon={faEnvelope} className="text-[#C6A75E] text-lg mt-1" />
-              <div>
-                <h4 className="font-medium">Email</h4>
-                <p className="text-gray-600">hello@luxevents.com</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <FontAwesomeIcon icon={faLocationDot} className="text-[#C6A75E] text-lg mt-1" />
-              <div>
-                <h4 className="font-medium">Office</h4>
-                <p className="text-gray-600">
-                  Jubilee Hills, Hyderabad, India
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Decorative Divider */}
-          <div className="pt-10 border-t border-[#E8DFD1] text-sm text-gray-500">
-            Available for bookings worldwide.
+          {/* Map */}
+          <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+            <iframe
+              title="map"
+              src="https://www.google.com/maps?q=Jubilee+Hills+Hyderabad&output=embed"
+              className="w-full h-64"
+              loading="lazy"
+            ></iframe>
           </div>
         </motion.div>
 
-        {/* RIGHT FORM */}
+        {/* RIGHT SIDE FORM */}
         <motion.form
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-white p-10 rounded-2xl shadow-xl space-y-6"
+          className="bg-white/5 p-10 rounded-3xl backdrop-blur-2xl border border-white/10 shadow-2xl space-y-8"
         >
-          <div>
-            <label className="text-sm text-gray-600">Full Name</label>
-            <input
-              type="text"
-              placeholder="Enter your name"
-              className="w-full mt-2 p-3 border border-[#E8DFD1] rounded-lg focus:outline-none focus:border-[#C6A75E] transition"
-            />
-          </div>
+          <h3 className="text-2xl font-semibold mb-4">Send Us a Message</h3>
 
-          <div>
-            <label className="text-sm text-gray-600">Email Address</label>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full mt-2 p-3 border border-[#E8DFD1] rounded-lg focus:outline-none focus:border-[#C6A75E] transition"
-            />
-          </div>
+          {/* Floating Input */}
+          {["Full Name", "Email Address"].map((label, i) => (
+            <div key={i} className="relative">
+              <input
+                type={label.includes("Email") ? "email" : "text"}
+                placeholder=" "
+                className="peer w-full bg-transparent border-b border-gray-600 py-3 focus:outline-none focus:border-purple-400"
+              />
+              <label className="absolute left-0 top-3 text-gray-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-500 peer-focus:-top-4 peer-focus:text-purple-400 peer-focus:text-xs">
+                {label}
+              </label>
+            </div>
+          ))}
 
-          <div>
-            <label className="text-sm text-gray-600">Event Type</label>
-            <select className="w-full mt-2 p-3 border border-[#E8DFD1] rounded-lg focus:outline-none focus:border-[#C6A75E] transition">
+          {/* Select */}
+          <div className="relative">
+            <select className="w-full bg-transparent border-b border-gray-600 py-3 focus:outline-none focus:border-purple-400">
               <option>Wedding</option>
               <option>Corporate Event</option>
-              <option>Birthday Celebration</option>
+              <option>Birthday</option>
               <option>Brand Launch</option>
             </select>
           </div>
 
-          <div>
-            <label className="text-sm text-gray-600">Message</label>
+          {/* Message */}
+          <div className="relative">
             <textarea
               rows="4"
-              placeholder="Tell us about your vision..."
-              className="w-full mt-2 p-3 border border-[#E8DFD1] rounded-lg focus:outline-none focus:border-[#C6A75E] transition"
+              placeholder=" "
+              className="peer w-full bg-transparent border-b border-gray-600 py-3 focus:outline-none focus:border-purple-400"
             ></textarea>
+            <label className="absolute left-0 top-3 text-gray-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-500 peer-focus:-top-4 peer-focus:text-purple-400 peer-focus:text-xs">
+              Your Vision...
+            </label>
           </div>
 
-          <button
+          {/* Button */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
             type="submit"
-            className="w-full bg-[#C6A75E] text-white py-3 rounded-full font-medium hover:opacity-90 transition flex items-center justify-center gap-3"
+            className="w-full bg-gradient-to-r from-purple-600 to-pink-500 py-3 rounded-full font-semibold flex items-center justify-center gap-3"
           >
             <FontAwesomeIcon icon={faPaperPlane} />
-            Send Inquiry
-          </button>
+            Send Message
+          </motion.button>
         </motion.form>
-
       </section>
 
-      {/* ================= FOOTER NOTE ================= */}
-      <section className="py-12 text-center border-t border-[#E8DFD1] text-sm text-gray-500">
-        © 2026 Luxe Events. Designed with elegance.
+      {/* ================= CTA ================= */}
+      <section className="py-20 text-center bg-gradient-to-r from-purple-900 to-black">
+        <h2 className="text-3xl font-bold mb-6">
+          Let’s Build Something Extraordinary Together
+        </h2>
+        <button className="bg-white text-black px-10 py-3 rounded-full font-semibold hover:scale-105 transition">
+          Book a Consultation
+        </button>
       </section>
 
     </div>

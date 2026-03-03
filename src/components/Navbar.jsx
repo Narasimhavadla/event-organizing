@@ -8,12 +8,11 @@ import {
   faPhone,
   faHeart,
   faBuilding,
-  faCakeCandles,
   faMusic,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import KapiLogo from "../assets/logopng.png"
+import KapiLogo from "../assets/logopng.png";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -39,11 +38,11 @@ export default function Navbar() {
     }, 150);
   };
 
+  // ✅ Updated services with routes
   const services = [
-    { icon: faHeart, title: "Wedding Planning" },
-    { icon: faBuilding, title: "Corporate Events" },
-    // { icon: faCakeCandles, title: "Birthday Parties" },
-    { icon: faMusic, title: "Live Concerts" },
+    { icon: faHeart, title: "Wedding Planning", path: "/wedding" },
+    { icon: faBuilding, title: "Corporate Events", path: "/corporate-events" },
+    { icon: faMusic, title: "Live Concerts", path: "/live-concert" },
   ];
 
   return (
@@ -60,8 +59,7 @@ export default function Navbar() {
 
           {/* LOGO */}
           <div className="text-2xl font-bold text-indigo-600">
-            {/* EventElite */}
-            <img src={KapiLogo} className="h-12 w-20"></img>
+            <img src={KapiLogo} alt="Logo" className="h-12 w-20" />
           </div>
 
           {/* DESKTOP MENU */}
@@ -100,14 +98,13 @@ export default function Navbar() {
                     transition={{ duration: 0.2 }}
                     className="absolute left-1/2 -translate-x-1/2 mt-6 w-72 bg-white rounded-2xl shadow-2xl border overflow-hidden"
                   >
-                    {/* Arrow */}
                     <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-l border-t"></div>
 
                     <div className="py-3">
                       {services.map((service, index) => (
                         <NavLink
                           key={index}
-                          to="#"
+                          to={service.path}
                           className="group flex items-center gap-4 px-6 py-4 hover:bg-indigo-50 transition relative"
                         >
                           <span className="absolute left-0 top-0 h-full w-1 bg-indigo-600 scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></span>
@@ -140,7 +137,10 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden lg:block">
-            <NavLink to="/book-event" className="flex items-center gap-2 bg-indigo-600 text-white px-6 py-2.5 rounded-full shadow hover:bg-indigo-700 transition">
+            <NavLink
+              to="/book-event"
+              className="flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full shadow-xl hover:shadow-rose-300/50 transition px-6 py-2.5 rounded-full shadow "
+            >
               <FontAwesomeIcon icon={faCalendarCheck} />
               Book Event
             </NavLink>
@@ -215,7 +215,7 @@ export default function Navbar() {
                     {services.map((service, index) => (
                       <NavLink
                         key={index}
-                        to="#"
+                        to={service.path}
                         onClick={() => setMobileOpen(false)}
                       >
                         {service.title}
@@ -226,7 +226,7 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            <NavLink to="#" onClick={() => setMobileOpen(false)}>
+            <NavLink to="/contact" onClick={() => setMobileOpen(false)}>
               Contact
             </NavLink>
 
@@ -238,10 +238,14 @@ export default function Navbar() {
 
           <div className="flex-grow"></div>
 
-          <button className="mt-6 bg-indigo-600 text-white py-3 rounded-full shadow hover:bg-indigo-700 transition flex items-center justify-center gap-2">
+          <NavLink
+            to="/book-event"
+            onClick={() => setMobileOpen(false)}
+            className="mt-6 bg-indigo-600 text-white py-3 rounded-full shadow hover:bg-indigo-700 transition flex items-center justify-center gap-2"
+          >
             <FontAwesomeIcon icon={faCalendarCheck} />
             Book Event
-          </button>
+          </NavLink>
         </div>
       </div>
     </>

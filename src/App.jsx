@@ -9,6 +9,9 @@ import AboutUs from './pages/AboutUs'
 import Footer from './components/footer'
 import Contact from './pages/Contact'
 import BookEvent from './pages/BookEvent'
+import WeddingService from './pages/services/weddingService'
+import CorporateEvents from './pages/services/CorporateEvents'
+import LiveConcert from './pages/services/LiveConcert'
 
 // from this test case 
 
@@ -32,6 +35,9 @@ function App() {
         <Route path="/about-us" element={<AboutUs /> } />
         <Route path="/contact" element={<Contact /> } />
         <Route path="/book-event" element={<BookEvent /> } />
+        <Route path="/wedding" element={<WeddingService /> } />
+        <Route path="/corporate-events" element={<CorporateEvents /> } />
+        <Route path="/live-concert" element={<LiveConcert /> } />
 
 
         {/* test */}
