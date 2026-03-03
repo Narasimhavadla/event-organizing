@@ -6,13 +6,16 @@ import {
   faStar,
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
+import TestTheme from "../components/themes/testtheme";
+import Landing1 from "../assets/logo.webp"
+import TestimonialsCarousel from "../components/testimonialsCorousal";
 
 export default function LandingPage() {
   return (
     <div className="w-full overflow-x-hidden">
 
       {/* HERO SECTION */}
-      <section className="min-h-screen mt-16 bg-gradient-to-br from-indigo-600 to-purple-700 text-white flex items-center">
+      <section className="min-h-screen  bg-gradient-to-br from-indigo-600 to-purple-700 text-white flex items-center">
         <div className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
 
           <div className="space-y-8">
@@ -54,7 +57,9 @@ export default function LandingPage() {
 
           {/* Right Side Image Placeholder */}
           <div className="hidden lg:block">
-            <div className="bg-white/20 backdrop-blur-lg rounded-3xl h-[450px] shadow-2xl"></div>
+            <div className="bg-white/20 backdrop-blur-lg rounded-3xl h-[400px] shadow-2xl">
+            <img src={Landing1} className="w-full h-full rounded-3xl object-cover"></img>
+            </div>
           </div>
 
         </div>
@@ -126,7 +131,7 @@ export default function LandingPage() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-20 bg-gray-50">
+      {/* <section className="py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-12">
             What Our Clients Say
@@ -148,7 +153,12 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+
+
+        <div className="w-4/5 mx-auto">
+        <TestimonialsCarousel />
+        </div>
 
       {/* FINAL CTA */}
       <section className="py-20 bg-indigo-600 text-white text-center">
@@ -166,6 +176,8 @@ export default function LandingPage() {
           </button>
         </div>
       </section>
+
+      <TestTheme />
 
       {/* FOOTER */}
       <footer className="bg-gray-900 text-gray-300 py-10 text-center">

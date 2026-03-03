@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import KapiLogo from "../assets/logopng.png"
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -41,7 +42,7 @@ export default function Navbar() {
   const services = [
     { icon: faHeart, title: "Wedding Planning" },
     { icon: faBuilding, title: "Corporate Events" },
-    { icon: faCakeCandles, title: "Birthday Parties" },
+    // { icon: faCakeCandles, title: "Birthday Parties" },
     { icon: faMusic, title: "Live Concerts" },
   ];
 
@@ -52,14 +53,15 @@ export default function Navbar() {
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled
             ? "bg-white shadow-md py-3"
-            : "bg-white/80 backdrop-blur-md py-4"
+            : "bg-white/80 backdrop-blur-md py-3"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
 
           {/* LOGO */}
           <div className="text-2xl font-bold text-indigo-600">
-            EventElite
+            {/* EventElite */}
+            <img src={KapiLogo} className="h-12 w-20"></img>
           </div>
 
           {/* DESKTOP MENU */}
@@ -138,10 +140,10 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden lg:block">
-            <button className="flex items-center gap-2 bg-indigo-600 text-white px-6 py-2.5 rounded-full shadow hover:bg-indigo-700 transition">
+            <NavLink to="/book-event" className="flex items-center gap-2 bg-indigo-600 text-white px-6 py-2.5 rounded-full shadow hover:bg-indigo-700 transition">
               <FontAwesomeIcon icon={faCalendarCheck} />
               Book Event
-            </button>
+            </NavLink>
           </div>
 
           {/* MOBILE BUTTON */}

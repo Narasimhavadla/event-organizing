@@ -8,6 +8,19 @@ import LandingPage from './pages/LandingPage'
 import AboutUs from './pages/AboutUs'
 import Footer from './components/footer'
 import Contact from './pages/Contact'
+import BookEvent from './pages/BookEvent'
+
+// from this test case 
+
+import Elegant from './components/themes/elegant'
+import Vibrant from "./components/themes/vibrant"
+import Corporate from './components/themes/corporate'
+import Modern from './components/themes/modern'
+import Luxury from './components/themes/luxuary'
+import ArtisticContact from './components/themes/Artistic'
+import FairytaleContact from './components/themes/Fairytale'
+
+// 
 
 function App() {
 
@@ -18,6 +31,19 @@ function App() {
         <Route path="/" element={<LandingPage /> } />
         <Route path="/about-us" element={<AboutUs /> } />
         <Route path="/contact" element={<Contact /> } />
+        <Route path="/book-event" element={<BookEvent /> } />
+
+
+        {/* test */}
+        <Route path="/elegant" element={<Elegant /> } />
+        <Route path="/vibrant" element={<Vibrant /> } />
+        <Route path="/corporate" element={<Corporate /> } />
+        <Route path="/modern" element={<Modern /> } />
+        <Route path="/luxuary" element={<Luxury /> } />
+        <Route path="/artistic" element={<ArtisticContact /> } />
+        <Route path="/fairy" element={<FairytaleContact /> } />
+
+        {/* end */}
       </Routes>
       <Footer />
 
