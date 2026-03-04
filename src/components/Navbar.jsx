@@ -9,6 +9,7 @@ import {
   faHeart,
   faBuilding,
   faMusic,
+  faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -49,7 +50,7 @@ export default function Navbar() {
     <>
       {/* ================= NAVBAR ================= */}
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        className={`sticky top-0 w-full z-50 transition-all duration-300 ${
           scrolled
             ? "bg-white shadow-md py-3"
             : "bg-white/80 backdrop-blur-md py-3"
@@ -133,13 +134,25 @@ export default function Navbar() {
               <FontAwesomeIcon icon={faPhone} />
               +91 98765 43210
             </div>
+
           </div>
 
           {/* CTA */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-4">
+
+            {/* LOGIN BUTTON */}
+            <NavLink
+              to="/login"
+              className="flex items-center gap-2 border border-indigo-600 text-indigo-600 px-5 py-2.5 rounded-full hover:bg-indigo-600 hover:text-white transition duration-300"
+            >
+              <FontAwesomeIcon icon={faRightToBracket} />
+              Login
+            </NavLink>
+
+            {/* BOOK EVENT BUTTON */}
             <NavLink
               to="/book-event"
-              className="flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full shadow-xl hover:shadow-rose-300/50 transition px-6 py-2.5 rounded-full shadow "
+              className="flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-2.5 rounded-full shadow-lg hover:shadow-rose-300/50 hover:scale-105 transition duration-300"
             >
               <FontAwesomeIcon icon={faCalendarCheck} />
               Book Event
@@ -238,10 +251,19 @@ export default function Navbar() {
 
           <div className="flex-grow"></div>
 
+
+          <NavLink
+            to="/login"
+            onClick={() => setMobileOpen(false)}
+            className="mb-2 border border-indigo-600 text-indigo-600 py-3 rounded-full text-center hover:bg-indigo-600 hover:text-white transition"
+          >
+            Login
+          </NavLink>
+
           <NavLink
             to="/book-event"
             onClick={() => setMobileOpen(false)}
-            className="mt-6 bg-indigo-600 text-white py-3 rounded-full shadow hover:bg-indigo-700 transition flex items-center justify-center gap-2"
+            className="mt-4 bg-indigo-600 text-white py-3 rounded-full shadow hover:bg-indigo-700 transition flex items-center justify-center gap-2"
           >
             <FontAwesomeIcon icon={faCalendarCheck} />
             Book Event

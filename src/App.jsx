@@ -12,6 +12,8 @@ import BookEvent from './pages/BookEvent'
 import WeddingService from './pages/services/weddingService'
 import CorporateEvents from './pages/services/CorporateEvents'
 import LiveConcert from './pages/services/LiveConcert'
+import LoginPage from './pages/login'
+import AdminDashboard from './admin/dashboard'
 
 // from this test case 
 
@@ -38,6 +40,8 @@ function App() {
         <Route path="/wedding" element={<WeddingService /> } />
         <Route path="/corporate-events" element={<CorporateEvents /> } />
         <Route path="/live-concert" element={<LiveConcert /> } />
+        <Route path="/login" element={<LoginPage /> } />
+        <Route path="/admin-dashboard" element={<AdminDashboard /> } />
 
 
         {/* test */}

@@ -12,3 +12,34 @@ Luxury Bold (Black & Gold + Noir)
 
 Artistic Creative (Abstract Shapes)
 
+ <div className="hidden lg:flex items-center gap-4">
+
+            {/* LOGIN BUTTON */}
+            <NavLink
+              to="/login"
+              className="flex items-center gap-2 border border-indigo-600 text-indigo-600 px-5 py-2.5 rounded-full hover:bg-indigo-600 hover:text-white transition duration-300"
+            >
+              <FontAwesomeIcon icon={faRightToBracket} />
+              Login
+            </NavLink>
+
+            {/* BOOK EVENT BUTTON */}
+            <NavLink
+              to="/book-event"
+              className="flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-2.5 rounded-full shadow-lg hover:shadow-rose-300/50 hover:scale-105 transition duration-300"
+            >
+              <FontAwesomeIcon icon={faCalendarCheck} />
+              Book Event
+            </NavLink>
+          </div>
+
+
+                    {/* MOBILE BUTTONS */}
+          <NavLink
+            to="/login"
+            onClick={() => setMobileOpen(false)}
+            className="mb-4 border border-indigo-600 text-indigo-600 py-3 rounded-full text-center hover:bg-indigo-600 hover:text-white transition"
+          >
+            Login
+          </NavLink>
+

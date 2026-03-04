@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold text-white mb-4">
-              Eventify
+              Kapi Events
             </h3>
             <p className="text-sm leading-relaxed">
               We specialize in crafting memorable experiences — from luxury
@@ -89,7 +89,7 @@ export default function Footer() {
               </p>
               <p className="flex items-center gap-3">
                 <FontAwesomeIcon icon={faEnvelope} />
-                info@eventify.com
+                info@kapienvents.com
               </p>
             </div>
           </div>
