@@ -14,6 +14,7 @@ import CorporateEvents from './pages/services/CorporateEvents'
 import LiveConcert from './pages/services/LiveConcert'
 import LoginPage from './pages/login'
 import AdminDashboard from './admin/dashboardlayout'
+import GalleryPage from './pages/gallery'
 
 // from this test case 
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/live-concert" element={<LiveConcert /> } />
         <Route path="/login" element={<LoginPage /> } />
         <Route path="/admin-dashboard" element={<AdminDashboard /> } />
+        <Route path="/gallery" element={<GalleryPage /> } />
 
 
         {/* test */}
