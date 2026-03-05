@@ -5,8 +5,11 @@ import {
   faChartLine, faUsers, faHandHoldingHeart, faCalendarDays,
   faMoneyBillWave, faBars, faRightFromBracket, faPhotoFilm,
   faHandshake, faCalendar, faCalendarCheck, faEnvelope, 
-  faBell, faSearch, faArrowRight, faTicket, faCheckDouble, faXmark
+  faBell, faSearch, faArrowRight, faTicket, faCheckDouble, faXmark,
+  faUser
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+
 import AdminDashboard from "./AdminDashboard";
 import AdminLiveEvents from "./AdminLiveEvents"
 import AdminTicketSales from "./AdminTicketSales";
@@ -14,23 +17,30 @@ import AdminAttendees from "./AdminAttendees";
 import AdminGallery from "./AdminGallery";
 import AdminSponsors from "./AdminSponser";
 import AdminCalendar from "./AdminCalendar";
+import AdminNotification from "./AdminNotification";
+import AdminProfile from "./AdminProfile";
+import AdminBookings from "./AdminBookings";
 
 
 export default function EventAdminPro() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [notificationOpen, setNotificationOpen] = useState(false);
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+
+  const navigate = useNavigate()
 
   const menuItems = [
     { name: "Dashboard", icon: faChartLine },
     { name: "Live Events", icon: faCalendarDays },
     { name: "Ticket Sales", icon: faTicket },
     { name: "Attendees", icon: faUsers },
-    { name: "Gallery", icon: faPhotoFilm },
+    { name: "Bookings", icon: faCalendarCheck },
     { name: "Sponsors", icon: faHandshake },
     { name: "Calender", icon: faCalendar },
-    { name: "Bookings", icon: faCalendarCheck },
-    { name: "Notifications", icon: faEnvelope },
+    { name: "Gallery", icon: faPhotoFilm },
+    // { name: "Notifications", icon: faEnvelope },
   ];
 
   /* ================= TAB RENDER LOGIC ================= */
@@ -39,6 +49,8 @@ const renderActiveTab = () => {
   switch (activeTab) {
     case "Dashboard":
       return <AdminDashboard />;
+    case "profile":
+      return <AdminProfile />;
     case "Live Events":
       return <AdminLiveEvents />;
     case "Ticket Sales":
@@ -51,10 +63,10 @@ const renderActiveTab = () => {
       return <AdminSponsors />;
     case "Calender":
       return <AdminCalendar />;
-    // case "Bookings":
-    //   return <BookingsComponent />;
+    case "Bookings":
+      return <AdminBookings />;
     // case "Notifications":
-    //   return <NotificationsComponent />;
+    //   return <AdminNotification />;
     default:
       return <AdminDashboard />;
   }
@@ -75,7 +87,7 @@ const renderActiveTab = () => {
           <div className="p-6 flex items-center justify-between border-b border-white/10">
             <div className="flex items-center gap-3">
                <div className="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center text-white font-black italic">K</div>
-               <span className="text-white font-black tracking-tight text-lg uppercase">Kapi Events <span className="text-indigo-400">Pro</span></span>
+               <span className="text-white font-black tracking-tight text-lg uppercase">Kapi Events </span>
             </div>
             <button onClick={() => setSidebarOpen(false)} className="text-slate-400 hover:text-white transition-colors">
               <FontAwesomeIcon icon={faXmark} className="text-xl" />
@@ -126,24 +138,55 @@ const renderActiveTab = () => {
       <main className="flex-1 min-w-0 flex flex-col">
         
         {/* TOP BAR */}
-        <header className="h-20 bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200 flex items-center justify-between px-6 lg:px-10">
+        <header className="h-16 bg-white/80 backdrop-blur-md sticky top-18 z-40 border-b border-slate-200 flex items-center justify-between px-6 lg:px-10">
+          
           <div className="flex items-center gap-4">
             <button onClick={() => setSidebarOpen(true)} className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 text-slate-600 active:scale-95 transition-all">
               <FontAwesomeIcon icon={faBars} />
             </button>
-            <h1 className="text-xl font-black text-slate-800 tracking-tight">{activeTab}</h1>
+             <h1 className="text-xl font-black text-slate-800 tracking-tight">{activeTab}</h1>
           </div>
 
           <div className="flex items-center gap-3 lg:gap-6">
-             <div className="hidden md:flex bg-slate-100 px-4 py-2 rounded-xl items-center gap-2 border border-slate-200">
-                <FontAwesomeIcon icon={faSearch} className="text-slate-400 text-xs" />
-                <input type="text" placeholder="Search events..." className="bg-transparent outline-none text-xs w-32 focus:w-48 transition-all" />
-             </div>
-             <button className="relative w-10 h-10 rounded-xl bg-slate-100 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 transition-all">
-                <FontAwesomeIcon icon={faBell} />
-                <span className="absolute top-2 right-2 w-2 h-2 bg-rose-500 rounded-full border-2 border-white"></span>
-             </button>
-             <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 border-2 border-white shadow-md cursor-pointer" />
+            {/* NOTIFICATION BUTTON */}
+            <button onClick={() => setNotificationOpen(true)} className="...">
+               <FontAwesomeIcon icon={faBell} />
+               {/* ... (Badge code) */}
+            </button>
+
+            {/* PROFILE HOVER DROPDOWN */}
+            <div 
+              className="relative py-2" // py-2 creates a 'bridge' so hover doesn't break
+              onMouseEnter={() => setShowProfileDropdown(true)}
+              onMouseLeave={() => setShowProfileDropdown(false)}
+            >
+              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 border-2 border-white shadow-md cursor-pointer hover:scale-105 transition-transform" />
+              
+              {showProfileDropdown && (
+                <div className="absolute right-0 top-full pt-2 w-64 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+                  <div className="bg-white rounded-[2rem] shadow-2xl border border-slate-100 overflow-hidden p-2">
+                    <div className="px-4 py-4 bg-slate-50 rounded-2xl mb-2">
+                      <p className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Admin Account</p>
+                      <p className="text-xs font-black text-slate-800 truncate">admin@kapievents.com</p>
+                    </div>
+                    
+                    <button 
+                      onClick={() => { setActiveTab("profile"); setShowProfileDropdown(false); }}
+                      className="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition-all"
+                    >
+                      <FontAwesomeIcon icon={faUser} className="w-4" /> Profile Details
+                    </button>
+                    
+                    <button 
+                      onClick={() => setShowLogoutConfirm(true)}
+                      className="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold text-rose-500 hover:bg-rose-50 rounded-xl transition-all mt-1"
+                    >
+                      <FontAwesomeIcon icon={faRightFromBracket} className="w-4" /> Logout
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </header>
 
@@ -170,6 +213,12 @@ const renderActiveTab = () => {
            </div>
         </div>
       )}
+
+      {/* NOTIFICATION SIDEBAR */}
+      <AdminNotification 
+        isOpen={notificationOpen} 
+        onClose={() => setNotificationOpen(false)} 
+      />
     </div>
   );
 }

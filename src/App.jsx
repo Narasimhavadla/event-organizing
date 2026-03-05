@@ -13,7 +13,7 @@ import WeddingService from './pages/services/weddingService'
 import CorporateEvents from './pages/services/CorporateEvents'
 import LiveConcert from './pages/services/LiveConcert'
 import LoginPage from './pages/login'
-import AdminDashboard from './admin/dashboard'
+import AdminDashboard from './admin/dashboardlayout'
 
 // from this test case 
 

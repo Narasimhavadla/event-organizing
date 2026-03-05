@@ -49,12 +49,12 @@ const AdminLiveEvents = () => {
   ];
 
   return (
-    <div className="p-2 lg:p-4 space-y-8 bg-[#F8FAFC] min-h-screen">
+    <div className="p-2 lg:p-4 space-y-4 bg-[#F8FAFC] min-h-screen">
       
       {/* ===== INTERACTIVE GLASS HEADER ===== */}
-      <div className="sticky top-20 z-30 backdrop-blur-md bg-white/70 border border-white shadow-xl shadow-slate-200/50 rounded-[2.5rem] p-6 flex flex-col lg:flex-row items-center justify-between gap-6 transition-all duration-500">
+      <div className="sticky top-32 z-30 backdrop-blur-md bg-white/70 border border-white shadow-xl shadow-slate-200/50 rounded-[2.5rem] p-3 flex flex-col lg:flex-row items-center justify-between gap-6 transition-all duration-500">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-indigo-200 animate-bounce-slow">
+          <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-indigo-200 animate-bounce-slow">
             <FontAwesomeIcon icon={faBolt} className="text-2xl" />
           </div>
           <div>
@@ -63,12 +63,12 @@ const AdminLiveEvents = () => {
           </div>
         </div>
         
-        <div className="flex items-center gap-2 bg-slate-100/50 p-2 rounded-3xl border border-slate-200/50">
+        <div className="flex items-center gap-2 bg-slate-100/50 p-1 rounded-3xl border border-slate-200/50">
           {["All", "Live", "Upcoming","Past"].map((t) => (
             <button
               key={t}
               onClick={() => setFilter(t)}
-              className={`px-4 py-3 rounded-2xl text-xs font-black transition-all duration-300 ${
+              className={`px-4 py-2 rounded-2xl text-xs font-black transition-all duration-300 ${
                 filter === t 
                 ? "bg-white text-indigo-600 shadow-md scale-105" 
                 : "text-slate-400 hover:text-slate-600"
@@ -92,7 +92,7 @@ const AdminLiveEvents = () => {
           >
             {/* LIVE PULSE EFFECT (Only for Live status) */}
             {event.status === 'Live' && (
-              <div className="absolute inset-0 bg-indigo-500/5 rounded-[3rem] animate-pulse-slow -z-10 blur-xl"></div>
+              <div className="absolute inset-0 bg-green-500/5 rounded-[3rem] animate-pulse-slow -z-10 blur-xl"></div>
             )}
 
             {/* Media Container */}
@@ -107,7 +107,7 @@ const AdminLiveEvents = () => {
               {/* Status Floating Badge */}
               <div className="absolute top-6 left-6">
                 <div className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl backdrop-blur-xl border border-white/20 text-[10px] font-black uppercase tracking-widest ${
-                  event.status === 'Live' ? 'bg-indigo-600/90 text-white' : 'bg-slate-900/90 text-white'
+                  event.status === 'Live' ? 'bg-green-600/90 text-white' : 'bg-slate-900/90 text-white'
                 }`}>
                   <span className={`w-2 h-2 rounded-full ${event.status === 'Live' ? 'bg-white animate-ping' : 'bg-slate-400'}`} />
                   {event.status}
@@ -166,13 +166,13 @@ const AdminLiveEvents = () => {
               <div className="flex items-center justify-between pt-2">
                 <div>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Total Yield</p>
-                  <p className="text-2xl font-black text-slate-800 tracking-tighter italic">{event.revenue}</p>
+                  <p className="text-xl font-black text-slate-800 tracking-tighter italic">{event.revenue}</p>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex gap-2">
                   <button className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-400 hover:bg-rose-50 hover:text-rose-500 transition-all duration-300 flex items-center justify-center border border-transparent hover:border-rose-100 active:scale-90">
                     <FontAwesomeIcon icon={faPenToSquare} />
                   </button>
-                  <button className="px-6 py-3 rounded-2xl bg-indigo-600 text-white font-black text-[11px] tracking-widest uppercase hover:bg-indigo-700 shadow-lg shadow-indigo-100 hover:shadow-indigo-300 transition-all flex items-center gap-3 group active:scale-95">
+                  <button className="px-2 py-3 rounded-2xl bg-indigo-600 text-white font-black text-[11px] tracking-widest uppercase hover:bg-indigo-700 shadow-lg shadow-indigo-100 hover:shadow-indigo-300 transition-all flex items-center gap-3 group active:scale-95">
                     <FontAwesomeIcon icon={faChartPie} className="group-hover:rotate-180 transition-transform duration-700" />
                     Analytics
                   </button>
